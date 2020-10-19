@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="form">
+            <form action="/article_add" method="POST">
+                <input name="title" placeholder="文章题目" required=true> <br>
+                <input name="author" placeholder="作者" required=true> <br>
+                <input name="secret" placeholder="上传秘钥" required=true> <br>
+                <textarea name="content" placeholder="内容" required=true></textarea>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+    </body>
+</html>
+
+<style>
+    form{
+        width: 600px;
+        margin: auto;
+        padding: 20px;
+    }
+    input {
+        width: 100%;
+        height: 25px;
+        margin-bottom: 20px;
+    }
+    textarea {
+        width: 100%;
+        height: 400px;
+        resize: none;
+    }
+    button {
+        width: 100%;
+        height: 25px;
+        margin-top: 20px;
+        color: gray;
+    }
+</style>

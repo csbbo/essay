@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<ul class="collection">
+    {%for article in articles%}
+    <a href="/article/{{article.id}}" class="list-item">
+    <li class="collection-item avatar">
+      <span class="title">{{article.title}}</span><br>
+      <span class="author">{{article.author}}</span>
+      <p class="content">
+        {{article.content}}
+      </p>
+      <div class="item-footer">
+        <span class="publish-date">{{article.publish_date}}</span>
+        <span class="words">字数: {{article.words}}</span>
+        <span class="pdf_downloads">下载: {{article.pdf_downloads}}</span>
+        <span class="likes">喜欢: {{article.likes}}</span>
+        <span class="reads">阅读: {{article.reads}}</span>
+      </div>
+    </li>
+    </a>
+    {%endfor%}
+</ul>
+{% endblock %}
+
+
+{% block style %}
+<style>
+.collection {
+    width: 800px;
+    margin: auto;
+    margin-top: 20px;
+}
+.collection .list-item {
+    display: block;
+    text-decoration:none;
+    color:#333;
+}
+.collection li {
+    padding: 10px 20px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    transition: border-left 0.15s;
+}
+.collection li:hover {
+    border-left: 2px solid #4db6ac;
+}
+
+.title {
+    font-size: 20px !important;
+}
+.author {
+    font-size: 13px;
+}
+.content {
+    font-size: 15px;
+}
+
+.item-footer {
+    margin-top: 5px;
+}
+.item-footer .words{
+    margin-left: 7px;
+}
+</style>
+{% endblock %}

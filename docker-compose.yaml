@@ -1,0 +1,12 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:4.2.9
+    container_name: essay_mongo
+    restart: always
+  server:
+    image: essay_server:latest
+    container_name: essay_server
+    restart: always
+    ports:
+      - 80:3000

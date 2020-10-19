@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="form">
+            <form action="/article_delete" method="POST">
+                <input name="id" placeholder="文章ID" required=true> <br>
+                <input name="secret" placeholder="删除秘钥" required=true> <br>
+                <button type="submit">删除</button>
+            </form>
+        </div>
+    </body>
+</html>
+
+<style>
+    form{
+        width: 600px;
+        margin: auto;
+        padding: 20px;
+    }
+    input {
+        width: 100%;
+        height: 25px;
+        margin-bottom: 20px;
+    }
+    button {
+        width: 100%;
+        height: 25px;
+        margin-top: 20px;
+        color: gray;
+    }
+</style>

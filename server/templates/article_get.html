@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block body %}
+<!-- 隐藏菜单 -->
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-small green">
+        <i class="tiny material-icons">color_lens</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating btn-small red modal-trigger" href="#modal-comment"><i class="material-icons">comment</i></a></li>
+        <li><a class="btn-floating btn-small indigo" onclick="$('.tap-target').tapTarget('open')"><i class="material-icons">alarm</i></a></li>
+        <li><a class="btn-floating btn-small green" href="/pdfdownload/{{_id}}"><i class="material-icons">cloud_download</i></a></li>
+        <li><a id="like" class="btn-floating btn-small blue"><i class="material-icons">favorite</i></a></li>
+    </ul>
+</div>
+
+<!-- 评论 -->
+<div id="modal-comment" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>点评一下康康? 哈哈! </h4>
+        <textarea id="comment-content" placeholder="在这里输入内容吧!😆😆😆"></textarea>
+        <a id="comment-btn" class="waves-effect waves-light btn"><i class="material-icons right">send</i>评论</a>
+
+        <ul class="comment-history collection">
+            <p style="padding-left: 10px; display: none;" id="tmp-content"></p>
+            {% if comments %}
+                {%for comment in comments%}
+                <li class="collection-item avatar">
+                <img src="/static/image/avatar/none{{loop.index % 4}}.png" alt="" class="circle">
+                <span class="title">佚名</span>
+                <p>
+                    {{comment.content}}
+                </p>
+                <span>{{comment.create_time.strftime("%Y-%m-%d %H:%M:%S")}}</span>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                {%endfor%}
+            {% else %}
+                <p id="empty-comment" style="padding-left: 10px;">空空如也呢~~，还没有人评论，做第一个吃🦀的人吧！</p>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<!-- 发现新特性 -->
+<div class="fixed-action-btn" style="bottom: 45px; left: 24px; visibility:hidden">
+    <a id="menu" class="btn btn-floating btn-large cyan"><i class="material-icons">menu</i></a>
+</div>
+<div class="tap-target" data-target="menu">
+    <div class="tap-target-content">
+        <h5>欢迎来到</h5>
+        <p>非常高兴您看到了我们的产品，也很激动您是最早一批使用我们产品的人，我们将致力于为您提供每日一篇有趣且有意义的小说</p>
+    </div>
+</div>
+
+<div class="article">
+    <div class="title">{{title}}</div>
+    <div class="author">{{author}}</div>
+    <div class="content">{{content}}</div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton({
+            direction: 'top',
+            hoverEnabled: false
+        });
+
+        $('.modal').modal();
+
+        $('.tap-target').tapTarget({
+            direction: 'top',
+        });
+    });
+    $("#like").click(function(){
+        var article_id = "{{_id}}"
+        $.post("/like",
+        {
+            article_id: article_id,
+        },
+        function(data,status){
+            if (data.err != null) {
+                alert(data.msg)
+            } else {
+                alert(data.data);
+            }
+        });
+    });
+    $("#comment-btn").click(function(){
+        var article_id = "{{_id}}"
+        var content = $('#comment-content').val()
+        if (content === '') {
+            alert("评论不能为空")
+            return
+        }
+        $.post("/comment",
+        {
+            article_id: article_id,
+            content: content
+        },
+        function(data,status){
+            if (data.err != null) {
+                alert(data.msg)
+            } else {
+                $('#tmp-content').text(content)
+                $('#tmp-content').css("display","block")
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+    .article {
+        width: 800px;
+        margin: auto;
+        background-color: #ffe0b2;
+        padding: 20px;
+    }
+    .title {
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+    .author {
+        text-align: center;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+    .content {
+        font-size: 15px;
+        line-height: 30px;
+        letter-spacing: 1px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* 发现新特性 */
+    .tap-target{
+        background-color: #00bcd4 !important;
+    }
+
+    /* 评论 */
+    .modal-content {
+        margin-bottom: 30px;
+    }
+    .modal-content textarea {
+        border-radius: 5px;
+        resize: none;
+        height: 80px;
+    }
+    .modal-content a {
+        float: right;
+        margin-top: 20px;
+    }
+    .comment-history {
+        clear: both;
+        margin-top: 90px;
+    }
+</style>
+{% endblock %}

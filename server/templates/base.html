@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='materialize/css/materialize.min.css') }}" media="screen,projection"/>
+    <link rel="icon" href="{{ url_for('static',filename='icon/dufu.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="{{ url_for('static',filename='materialize/js/jquery.js') }}"></script>
+
+    <title>{% block title %}essay{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">ZiYue</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">首页</a></li>
+            <li><a href="/article_list">往期</a></li>
+            <li><a href="/about">关于</a></li>
+          </ul>
+        </div>
+    </nav>
+
+{% block body %}{% endblock %}
+{% block script %}{% endblock %}
+<script type="text/javascript" src="{{ url_for('static',filename='materialize/js/materialize.min.js') }}"></script>
+</body>
+</html>
+
+<style>
+     /* 本地化Google Icon */
+    @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.eot') }}"); /* For IE6-8 */
+        src: local('Material Icons'),
+            local('MaterialIcons-Regular'),
+            url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.woff2') }}") format('woff2'),
+            url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.woff') }}") format('woff'),
+            url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.ttf') }}") format('truetype');
+    }
+    .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;  /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+    }
+
+    html {
+        height: 100%;
+    }
+    body {
+        margin: 0;
+        /* background-color: #bdbdbd; */
+        height: 100%;
+    }
+    .nav-wrapper {
+        background-color: #26a69a;
+    }
+    .brand-logo {
+        margin-left: 10px;
+    }
+</style>
+{% block style %}{% endblock %}

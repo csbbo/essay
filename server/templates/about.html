@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<div class="about">
+    <div class="about-head">
+        <p>子曰：学而时习之，不亦乐乎！</p>
+    </div>
+
+    <div class="email-subscribe">
+        <p>输入邮件地址并确认，订阅每日小说，订阅完成后会在每天早上推送当日小说</p>
+        <div class="form">
+            <input id="email" name="email" placeholder="邮箱">
+            <button class="btn" type="submit">确定</button>
+        </div>
+    </div>
+
+    <div class="article-contribute">
+        <p>
+            若各位看官想要投稿也与有荣焉
+        </p>
+        <p>
+            可将文章发送到邮箱chshbox@gmail.com
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+$("button").click(function(){
+    var email = $("#email").val()
+    if (email === '') {
+        alert("邮件不能为空!")
+        return
+    }
+    $.post("/email_subscribe",
+    {
+        email: email,
+    },
+    function(data,status){
+        if (data.err != null) {
+            alert(data.msg)
+        } else {
+            alert("已发送邮件，请前往确认!");
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+.about {
+    text-align: center;
+}
+input {
+    width: 240px !important;
+}
+button {
+    border: none;
+}
+</style>
+{% endblock %}
+

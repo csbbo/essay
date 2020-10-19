@@ -1,0 +1,9 @@
+SERVER_ADDR = 'http://127.0.0.1:3000'
+SERVER_PORT = 3000
+DEBUG_MODEL = True
+MONGODB_ADDR = 'mongodb://localhost:27017'
+
+EMAIL_FROM_ADDR = "599883519@qq.com"
+EMAIL_PASSWORD = "jnwflkeolinmbcad"
+EMAIL_SMTP_SERVER = "smtp.qq.com"
+EMAIL_PORT = 587

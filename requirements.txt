@@ -1,0 +1,4 @@
+APScheduler==3.6.3
+Flask==1.1.2
+Flask-PyMongo==2.3.0
+pdfkit==0.6.1

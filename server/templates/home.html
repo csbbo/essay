@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='materialize/css/materialize.min.css') }}" media="screen,projection"/>
+    <link rel="icon" href="{{ url_for('static',filename='icon/essay_icon_gif.gif') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="{{ url_for('static',filename='materialize/js/jquery.js') }}"></script>
+
+    <title>ZiYue</title>
+</head>
+
+<body>
+
+<div class="part1">
+    <div class="menu">
+        <span class="logo">ZiYue</span>
+        <a href="/article_list" class="func-item"><i class="material-icons">import_contacts</i> 文章</a>
+        <a href="/pdfdownload/{{_id}}" class="func-item"><i class="material-icons">cloud_download</i> 下载</a>
+        <a href="/about" class="func-item"><i class="material-icons">person</i> 关于</a>
+        <a href="https://github.com/csbbo/essay" class="func-item"><i class="material-icons">adb</i> GitHub</a>
+        <!-- <input class="search" placeholder="Search articles"> -->
+    </div>
+    <h2 class="slogan">每天一篇微小说，微笑每一天</h2>
+    <div class="skip-article">
+        <span>{{title}}</span><a href="/article/{{_id}}"><i class="material-icons">arrow_forward</i></a>
+    </div>
+</div>
+
+<div class="part2">
+    <p>
+        一个个发人深思的故事或感人肺腑的故事
+    </p>
+</div>
+
+<div class="carousel carousel-slider center">
+    <div class="carousel-fixed-item center">
+        <a class="btn waves-effect white grey-text darken-text-2">开始</a>
+    </div>
+    <div class="carousel-item green white-text" href="#one!">
+        <h2>情感</h2>
+        <p class="white-text">动人肺腑</p>
+    </div>
+    <div class="carousel-item amber white-text" href="#two!">
+        <h2>哲思</h2>
+        <p class="white-text">灵魂拷问</p>
+    </div>
+    <div class="carousel-item red white-text" href="#three!">
+        <h2>逻辑</h2>
+        <p class="white-text">一切皆有原因</p>
+    </div>
+    <div class="carousel-item blue white-text" href="#four!">
+        <h2>美好</h2>
+        <p class="white-text">沁人心脾</p>
+    </div>
+</div>
+
+
+<footer class="page-footer">
+<div class="container">
+    <div class="row">
+    <div class="col l6 s12">
+        <h5 class="white-text">子曰微小说</h5>
+        <p class="grey-text text-lighten-4">如有侵权请联系删除</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">联系我们</h5>
+        <ul>
+        <li><a class="grey-text text-lighten-3" href="#!">地址：北京海淀区西三旗</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">QQ： NTk5ODgzNTE5Cg==</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">微信：bmFqaWFvZGF0YW5nCg==</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">邮箱：chshbox@gmail.com</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+<div class="footer-copyright">
+    <div class="container">
+    © 2020 ZiYue
+    <a class="grey-text text-lighten-4 right" href="https://beian.miit.gov.cn/" target="_blank">桂ICP备17011922号</a>
+    </div>
+</div>
+</footer>
+<script>
+    $(document).ready(function(){
+        $('.carousel').carousel();
+    });
+</script>
+<script type="text/javascript" src="{{ url_for('static',filename='materialize/js/materialize.min.js') }}"></script>
+</body>
+</html>
+
+<style>
+     /* 本地化Google Icon */
+    @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.eot') }}"); /* For IE6-8 */
+        src: local('Material Icons'),
+            local('MaterialIcons-Regular'),
+            url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.woff2') }}") format('woff2'),
+            url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.woff') }}") format('woff'),
+            url("{{ url_for('static',filename='materialize/iconfont/MaterialIcons-Regular.ttf') }}") format('truetype');
+    }
+    .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;  /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+    }
+
+    .part1 {
+        background-color: #3f424a;
+        padding: 12px;
+    }
+    .menu {
+        width: 90%;
+        margin: auto;
+        color: #ffffff;
+    }
+    .menu .material-icons {
+        display: inline-flex;
+        vertical-align: middle;
+        padding-bottom: 5px;
+        font-size: 20px;
+    }
+    .logo {
+        font-size: 28px;
+        font-weight: 700;
+    }
+    .func-item {
+        font-size: 15px;
+        margin-left: 13px;
+        color: #ffffff;
+    }
+    .func-item:hover {
+        color: #1094e8;
+    }
+    /* .search {
+        float: right;
+    } */
+    .slogan {
+        color: #ffffff;
+        text-align: center;
+        padding-top: 60px;
+    }
+    .skip-article {
+        margin: auto;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .skip-article span {
+        background: #50545e;
+        padding: 10px 20px;
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    .skip-article a {
+        background-color: #0e83cd;
+        padding: 10px 5px;
+        color: #ffffff;
+        font-size: 20px;
+    }
+    .skip-article .material-icons {
+        display: inline-flex;
+        vertical-align: middle;
+        padding-bottom: 4px;
+    }
+
+    .part2 {
+        padding: 40px 60px;
+    }
+
+
+    .page-footer {
+        background-color: #212121;
+    }
+    .page-footer .footer-copyright {
+        background-color: #000000;
+    }
+</style>
